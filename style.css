@@ -1,0 +1,233 @@
+ /* Base styles */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+    background-color: #222;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #222;
+    border-radius: 12px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.highlight {
+    color: #FFB800;
+    font-weight: bold;
+}
+
+/* Grid layout for trailer cards */
+.trailers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* Trailer card styles */
+.trailer-card {
+    position: relative;
+    height: 280px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+}
+
+.trailer-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Image styling */
+.trailer-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    object-position: center center; 
+}
+
+
+.trailer-card:nth-child(3) .trailer-bg {
+    object-position: center bottom;
+}
+
+.trailer-card:hover .trailer-bg {
+    transform: scale(1.1);
+}
+
+.trailer-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.trailer-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.spec-label {
+    font-size: 16px;
+    color: #FFB800;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.spec-value {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.view-details {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #FFB800;
+    color: #333;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.trailer-card:hover .view-details {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.view-details:hover {
+    background-color: #FFC933;
+    box-shadow: 0 0 15px rgba(255, 184, 0, 0.5);
+}
+
+/* CTA button */
+.cta-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.explore-btn {
+    background-color: #FFB800;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(255, 184, 0, 0.3);
+}
+
+.explore-btn:hover {
+    background-color: #FFC933;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 184, 0, 0.5);
+}
+
+.arrow-icon {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.explore-btn:hover .arrow-icon {
+    transform: translateX(5px);
+}
+
+/* Dark overlay for better text readability */
+.trailer-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.4) 100%);
+    pointer-events: none;
+}
+
+/* Hover overlay effect */
+.trailer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.trailer-card:hover::before {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+    .trailers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 32px;
+    }
+    
+    .header h2 {
+        font-size: 28px;
+    }
+}
